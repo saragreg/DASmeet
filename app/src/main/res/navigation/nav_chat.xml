@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_chat"
+    app:startDestination="@id/fragmentListaChat">
+    <fragment
+        android:id="@+id/fragmentListaChat"
+        android:name="com.example.dasmeet.FragmentListaChat"
+        android:label="fragment_lista_chat"
+        tools:layout="@layout/fragment_lista_chat" >
+        <action
+            android:id="@+id/action_fragmentListaChat_to_fragmentChat3"
+            app:destination="@id/fragmentChat3" />
+        <action
+            android:id="@+id/action_fragmentListaChat_to_fragmentDecision"
+            app:destination="@id/fragmentDecision" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentChat3"
+        android:name="com.example.dasmeet.FragmentChat"
+        android:label="fragment_chat"
+        tools:layout="@layout/fragment_chat" >
+        <action
+            android:id="@+id/action_fragmentChat3_to_fragmentListaChat"
+            app:destination="@id/fragmentListaChat" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentDecision"
+        android:name="com.example.dasmeet.FragmentDecision"
+        android:label="fragment_decision"
+        tools:layout="@layout/fragment_decision" />
+</navigation>
