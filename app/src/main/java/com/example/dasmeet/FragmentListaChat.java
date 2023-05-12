@@ -5,10 +5,13 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -74,12 +77,25 @@ public class FragmentListaChat extends Fragment {
         ArrayList<String> noms=new ArrayList<>();
         ArrayList<String> imgs=new ArrayList<>();
         noms.add("jowi");
-        noms.add("dieguin");
+        noms.add("diego");
         noms.add("vicent");
 
         ListView lista=view.findViewById(R.id.listaChat);
         AdaptadorListaChat eladap = new AdaptadorListaChat(getContext(), noms, imgs);
         lista.setAdapter(eladap);
+
+        lista.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                System.out.println("el nombre es:"+noms.get(i));
+                NavController navController = Navigation.findNavController(view);
+                Bundle bundle = new Bundle();
+                bundle.putString("nombre", noms.get(i));
+                navController.navigate(R.id.action_fragmentListaChat_to_fragmentChat3, bundle);
+
+                //Navigation.findNavController(view).navigate(R.id.action_fragmentListaChat_to_fragmentChat3);
+            }
+        });
 
 
     }

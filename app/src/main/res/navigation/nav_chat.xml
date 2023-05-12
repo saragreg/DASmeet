@@ -24,6 +24,9 @@
         <action
             android:id="@+id/action_fragmentChat3_to_fragmentListaChat"
             app:destination="@id/fragmentListaChat" />
+        <argument
+            android:name="nombre"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/fragmentDecision"

@@ -2,11 +2,18 @@ package com.example.dasmeet;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.TextView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,6 +30,7 @@ public class FragmentChat extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private String nom="";
 
     public FragmentChat() {
         // Required empty public constructor
@@ -60,5 +68,31 @@ public class FragmentChat extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_chat, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        Bundle args = getArguments();
+        if (args != null) {
+            nom= args.getString("nombre");
+            System.out.println("el nombre que ha llegado es: "+nom);
+            // hacer algo con el número
+        }
+
+
+        TextView nombre=view.findViewById(R.id.textView);
+        //String nom = getArguments().getString("usu");
+        nombre.setText(nom);
+
+
+        ImageButton b = view.findViewById(R.id.atras);
+        b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(v).navigate(R.id.action_fragmentChat3_to_fragmentListaChat);
+            }
+        });
+
     }
 }
